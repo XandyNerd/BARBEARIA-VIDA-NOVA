@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbearia Vida Nova</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Header / Nav -->
+    <header>
+        <nav class="navbar">
+            <div class="logo-container">
+                <img src="lobobarbearia.jpg" alt="Logo" class="nav-logo-img">
+                <div class="logo">BARBEARIA VIDA NOVA</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#premium">Premium</a></li>
+                <li><a href="#team">Equipe</a></li>
+                <li><a href="#services">Serviços</a></li>
+                <li><a href="#hours">Horários</a></li>
+                <li><a href="https://wa.me/553171944816" class="btn-nav">Agendar</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Background Music (YouTube) -->
+    <div id="youtube-audio-player" style="display: none;"></div>
+    <div class="music-control" id="music-toggle">
+        <i class="fas fa-play"></i>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="video-background">
+            <!-- Placeholder video. User needs to replace 'assets/hero-video.mp4' with actual file -->
+            <video autoplay muted loop playsinline id="bg-video">
+                <source src="videodefundo.mp4" type="video/mp4">
+                Your browser does not support HTML5 video.
+            </video>
+            <div class="overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1>ESTILO & <br> <span class="highlight">TRADIÇÃO</span></h1>
+            <p>Mais do que um corte, uma experiência.</p>
+            <a href="https://wa.me/553171944816" class="btn-hero">AGENDAR HORÁRIO</a>
+        </div>
+    </section>
+
+    <!-- Premium Service Section -->
+    <section id="premium" class="premium-section">
+        <div class="container">
+            <h2>EXPERIÊNCIA <span class="highlight">PREMIUM</span></h2>
+
+            <div class="premium-content">
+                <div class="premium-text">
+                    <h3>Atendimento Exclusivo</h3>
+
+                    <p class="premium-desc">
+                        Aqui na Barbearia Vida Nova temos uma opção de atendimento exclusivo onde a barbearia fica
+                        fechada só para você.
+                        Ambiente reservado e um serviço completo do início ao fim. 👑
+                    </p>
+                    <p class="premium-note">
+                        Esse serviço acontece a cada 15 dias e as vagas se esgotam rapidamente. Acompanhe nossos
+                        stories!
+                    </p>
+
+                    <ul class="premium-list">
+                        <li><i class="fas fa-check"></i> Corte + Barba + Sobrancelha</li>
+                        <li><i class="fas fa-check"></i> Lavagem + Esfoliação</li>
+                        <li><i class="fas fa-check"></i> Cadeira com Massagem</li>
+                    </ul>
+
+                    <div class="amenities">
+                        <h4>Nossas Comodidades:</h4>
+                        <ul>
+                            <li><i class="fas fa-snowflake"></i> Ar Condicionado</li>
+                            <li><i class="fas fa-couch"></i> Área de espera confortável</li>
+                            <li><i class="fas fa-tv"></i> Televisão individual</li>
+                            <li><i class="fas fa-coffee"></i> Aquele cafezinho especial</li>
+                            <li><i class="fas fa-tools"></i> Equipamentos de ponta</li>
+                        </ul>
+                    </div>
+
+                    <a href="https://wa.me/553171944816" class="btn-hero btn-premium">CONSULTAR DISPONIBILIDADE</a>
+                </div>
+
+                <div class="premium-video">
+                    <iframe src="https://drive.google.com/file/d/1FuR2ODKMfEc5Qp8MHIGwk2cECbYlmrJB/preview" width="100%"
+                        height="480" allow="autoplay"
+                        style="border:none; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);"></iframe>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- Time de barbeiros -->
+    <section id="team" class="team-section">
+        <div class="container">
+            <h2>NOSSA <span class="highlight">EQUIPE</span></h2>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-img interactive-video-container">
+                        <img src="gustavobarber.png" alt="Barbeiro 1" class="static-img">
+                        <video src="atendvideo02.mp4" loop playsinline class="hover-video"></video>
+                    </div>
+                    <div class="team-info">
+                        <h3>Gustavo</h3>
+                        <span class="role">Master Barber</span>
+                        <div class="details">
+                            <p><strong>Idade:</strong> 25 anos</p>
+                            <p><strong>Exp:</strong> 8 anos</p>
+                        </div>
+                        <p class="description">Especialista em cortes clássicos e barboterapia. Transforma cada
+                            atendimento em uma experiência única.</p>
+                        <a href="https://wa.me/553185198305" class="btn-whatsapp" target="_blank"><i
+                                class="fab fa-whatsapp"></i> Agendar com Gustavo</a>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="barber02.jpg" alt="Barbeiro 2">
+                    </div>
+                    <div class="team-info">
+                        <h3>Uri</h3>
+                        <span class="role">Barber</span>
+                        <div class="details">
+                            <p><strong>Idade:</strong> 28 anos</p>
+                            <p><strong>Exp:</strong> 12 anos</p>
+                        </div>
+                        <p class="description">Focado em cortes modernos e degradês perfeitos. Sempre antenado nas novas
+                            tendências.</p>
+                        <a href="https://wa.me/553171944816" class="btn-whatsapp" target="_blank"><i
+                                class="fab fa-whatsapp"></i> Agendar com Uri</a>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="Barber03.jpg" alt="Barbeiro 3">
+                    </div>
+                    <div class="team-info">
+                        <h3>Alexandre Silva</h3>
+                        <span class="role">Barber</span>
+                        <div class="details">
+                            <p><strong>Idade:</strong> 22 anos</p>
+                            <p><strong>Exp:</strong> Iniciante</p>
+                        </div>
+                        <p class="description">Talento nato para desenhos e freestyle. Traz criatividade e estilo para
+                            cada corte.<br><!-- centralizar o botão! com os outros perfis, por isso do br --><br></p>
+                        <a href="https://wa.me/5531994148015" class="btn-whatsapp" target="_blank"><i
+                                class="fab fa-whatsapp"></i> Agendar com Alexandre</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Localização -->
+    <section id="units" class="units-section">
+        <div class="container">
+            <h2>NOSSAS <span class="highlight">UNIDADES</span></h2>
+            <p class="units-subtitle">A barbearia nº1 do Barreiro</p>
+
+
+            <div class="units-grid">
+                <!-- Unit 1 -->
+                <div class="unit-card">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipOxFNAY5vpiIB0rEnwpGLGkX_Hblgp1gloBD8xu=s680-w680-h510-rw"
+                        alt="Unidade Milionários" class="unit-bg">
+                    <div class="unit-overlay"></div>
+                    <div class="unit-content">
+                        <h3>Milionários</h3>
+                        <div class="unit-address">
+                            <p>Rua Amílcar Cabral, 401</p>
+                            <p>Bairro Milionários - Belo Horizonte</p>
+                            <a href="https://share.google/9zqqXCC8H3zSTH0sN" class="btn-unit">VER NO MAPA</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Unit 2 -->
+                <div class="unit-card">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipOrIbxCKMR4NMhfV5ApTt8lFQJbpEbgY0S21Zrs=s680-w680-h510-rw"
+                        alt="Unidade Flávio Marques Lisboa" class="unit-bg">
+                    <div class="unit-overlay"></div>
+                    <div class="unit-content">
+                        <h3>Flávio Marques Lisboa</h3>
+                        <div class="unit-address">
+                            <p>R. Santa Claúdia, 357</p>
+                            <p>Flávio Marques Lisboa - Belo Horizonte</p>
+                            <a href="https://share.google/FxR35T1QZCg49eaUq" class="btn-unit">VER NO MAPA</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Serviços -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2>NOSSOS <span class="highlight">SERVIÇOS</span></h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-cut service-icon"></i>
+                    <h3>CABELO</h3>
+                    <p>Cortes modernos e clássicos.</p>
+                    <span class="price">A partir de R$ 40,00</span>
+                    <button class="btn-service-details" data-category="cabelo">VER MAIS SERVIÇOS</button>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-user-tie service-icon"></i>
+                    <h3>BARBA</h3>
+                    <p>Modelagem e hidratação completa.</p>
+                    <span class="price">A partir de R$ 40,00</span>
+                    <button class="btn-service-details" data-category="barba">VER MAIS SERVIÇOS</button>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-eye service-icon"></i>
+                    <h3>SOBRANCELHA</h3>
+                    <p>Design e alinhamento dos fios.</p>
+                    <span class="price">A partir de R$ 20,00</span>
+                    <button class="btn-service-details" data-category="sobrancelha">VER MAIS SERVIÇOS</button>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-flask service-icon"></i>
+                    <h3>QUÍMICA / TRATAMENTOS</h3>
+                    <p>Progressiva, relaxamento e botox.</p>
+                    <span class="price">A partir de R$ 70,00</span>
+                    <button class="btn-service-details" data-category="quimica">VER MAIS SERVIÇOS</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Modal -->
+    <div id="services-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-title">Serviços Detalhados</h2>
+            <div id="modal-body" class="services-list">
+                <!-- Items will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Horarios de funcionamento-->
+    <section id="hours" class="hours-section">
+        <div class="container">
+            <div class="hours-header">
+                <i class="fas fa-cut hours-icon"></i>
+                <h2>HORÁRIOS DE <span class="highlight">FUNCIONAMENTO</span></h2>
+                <p class="hours-subtitle">Consulte nossos horários e agende seu atendimento.</p>
+            </div>
+
+            <div class="hours-container">
+                <ul class="hours-list">
+                    <li class="hours-item">
+                        <span class="day">SEGUNDA-FEIRA</span>
+                        <span class="time closed">Atendimento Exclusivo</span>
+                    </li>
+                    <li class="hours-item">
+                        <span class="day">TERÇA À SEXTA</span>
+                        <span class="time">08:00 - 18:00</span>
+                    </li>
+                    <li class="hours-item">
+                        <span class="day">SÁBADO</span>
+                        <span class="time">08:00 - 18:00</span>
+                    </li>
+                    <li class="hours-item">
+                        <span class="day">DOMINGO</span>
+                        <span class="time closed">Fechado</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="hours-footer">
+                <p class="schedule-label">AGENDE SEU HORÁRIO</p>
+                <a href="https://wa.me/553171944816" class="btn-white">AGENDAR AGORA</a>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Message & Before/After Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="about-text">
+                <h2>TRANSFORME SEU <span class="highlight">VISUAL</span></h2>
+                <p>"A excelência não é um ato, mas um hábito. Aqui, cuidamos de cada detalhe para que você saia com a
+                    sua melhor versão."</p>
+            </div>
+
+            <div class="transform-content">
+                <div class="comparison-slider">
+                    <div class="slider-wrapper">
+                        <!-- Spacer image to set height based on aspect ratio -->
+                        <img src="antes e depois.jpg" alt="" class="slider-spacer">
+
+                        <div class="image-container before-image">
+                            <img src="antes e depois.jpg" alt="Antes">
+                            <span class="label">ANTES</span>
+                        </div>
+                        <div class="image-container after-image">
+                            <img src="antes e depois.jpg" alt="Depois">
+                            <span class="label">DEPOIS</span>
+                        </div>
+                        <div class="slider-handle">
+                            <div class="handle-line"></div>
+                            <div class="handle-circle"><i class="fas fa-arrows-alt-h"></i></div>
+                        </div>
+                        <input type="range" min="0" max="100" value="50" class="slider-range" id="sliderRange">
+                    </div>
+                </div>
+
+                <div class="transform-divider"></div>
+
+                <!-- Video Carousel (Moved from Gallery) -->
+                <div class="video-carousel">
+                    <div class="carousel-track-container">
+                        <ul class="carousel-track">
+                            <li class="carousel-slide current-slide">
+                                <video src="cortesdemonstracao (1).mp4" loop muted playsinline></video>
+                            </li>
+                            <li class="carousel-slide">
+                                <video src="cortesdemonstracao (2).mp4" loop muted playsinline></video>
+                            </li>
+                            <li class="carousel-slide">
+                                <video src="cortesdemonstracao (3).mp4" loop muted playsinline></video>
+                            </li>
+                            <li class="carousel-slide">
+                                <video src="cortesdemonstracao (4).mp4" loop muted playsinline></video>
+                            </li>
+                        </ul>
+                        <button class="carousel-button carousel-button--left is-hidden"><i
+                                class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-button carousel-button--right"><i
+                                class="fas fa-chevron-right"></i></button>
+
+                        <div class="carousel-nav">
+                            <button class="carousel-indicator current-slide"></button>
+                            <button class="carousel-indicator"></button>
+                            <button class="carousel-indicator"></button>
+                            <button class="carousel-indicator"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Avaliações -->
+    <!-- tirar print das umas 10 a 20 avaliações do google e colocar dentro de balões 3d e fica anternando entre si, melhor que fazer a ligação do google com o site -->
+    <section id="reviews" class="reviews-section">
+        <div class="container">
+            <h2>O QUE DIZEM NOSSos <span class="highlight">CLIENTES</span></h2>
+
+            <!-- Rating Summary -->
+            <div class="rating-summary">
+                <div class="average-rating">4.9</div>
+                <div class="rating-stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="total-reviews">Baseado em 203 avaliações</p>
+            </div>
+
+            <!-- Reviews Carousel -->
+            <div class="reviews-carousel" id="reviewsCarousel">
+                <!-- Real Review 1 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Filipe Roberto"
+                            class="profile-photo">
+                        <div class="review-info">
+                            <h4>Filipe Roberto</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <a href="https://maps.app.goo.gl/Pbridr6CMUtfQGwL9" target="_blank" class="google-icon-link">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png"
+                                alt="Google" class="google-icon">
+                        </a>
+                    </div>
+                    <p class="review-text">"Ambiente super agradável, profissionais extremamente preparados, os
+                        melhores
+                        da cidade, que continuem sempre esse serviço e atendimento de excelência"</p>
+                    <span class="review-time">1 mês atrás</span>
+                </div>
+
+                <!-- Real Review 2 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Maria Silvana"
+                            class="profile-photo">
+                        <div class="review-info">
+                            <h4>Maria Silvana</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <a href="https://maps.app.goo.gl/Pbridr6CMUtfQGwL9" target="_blank" class="google-icon-link">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png"
+                                alt="Google" class="google-icon">
+                        </a>
+                    </div>
+                    <p class="review-text">"Gostaria de agradecer o excelente trabalho da barbearia meu filho corta
+                        o
+                        cabelo la há muito tempo. Profissionais competentes, ambiente limpo e agradável, e um
+                        atendimento que faz toda a diferença. Recomendo de olhos fechados!"</p>
+                    <span class="review-time">4 meses atrás</span>
+                </div>
+
+                <!-- Real Review 3 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://randomuser.me/api/portraits/men/85.jpg" alt="Luige Pessoa"
+                            class="profile-photo">
+                        <div class="review-info">
+                            <h4>Luige Pessoa</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <a href="https://maps.app.goo.gl/Pbridr6CMUtfQGwL9" target="_blank" class="google-icon-link">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png"
+                                alt="Google" class="google-icon">
+                        </a>
+                    </div>
+                    <p class="review-text">"São 10 anos de além de experiência com eles, mudança visual e melhorando
+                        o
+                        auto estima e tendo um excelente trabalho 🙏🏼 super indico 👏🏼👏🏼 ..."</p>
+                    <span class="review-time">4 meses atrás</span>
+                </div>
+
+                <!-- Real Review 4 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://randomuser.me/api/portraits/men/62.jpg" alt="Gustavo Fernandes"
+                            class="profile-photo">
+                        <div class="review-info">
+                            <h4>Gustavo Fernandes</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <a href="https://maps.app.goo.gl/Pbridr6CMUtfQGwL9" target="_blank" class="google-icon-link">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png"
+                                alt="Google" class="google-icon">
+                        </a>
+                    </div>
+                    <p class="review-text">"Atendimento top, corte impecável! Profissional atencioso, ambiente limpo
+                        e
+                        confortável. Saí muito satisfeito — virei cliente fiel. Recomendo demais!"</p>
+                    <span class="review-time">4 meses atrás</span>
+                </div>
+
+                <!-- Real Review 5 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://randomuser.me/api/portraits/men/12.jpg" alt="Stepheson" class="profile-photo">
+                        <div class="review-info">
+                            <h4>Stepheson</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <a href="https://maps.app.goo.gl/Pbridr6CMUtfQGwL9" target="_blank" class="google-icon-link">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png"
+                                alt="Google" class="google-icon">
+                        </a>
+                    </div>
+                    <p class="review-text">"Ótimo serviço e atendimento. Sai muito satisfeito com o corte. Salão
+                        muito
+                        organizado e limpo. Obrigado!!"</p>
+                    <span class="review-time">4 meses atrás</span>
+                </div>
+
+                <!-- Generated Review 6 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Lucas Mendes"
+                            class="profile-photo">
+                        <div class="review-info">
+                            <h4>Lucas Mendes</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <a href="https://maps.app.goo.gl/Pbridr6CMUtfQGwL9" target="_blank" class="google-icon-link">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png"
+                                alt="Google" class="google-icon">
+                        </a>
+                    </div>
+                    <p class="review-text">"Profissionais de altíssima qualidade. O ambiente é muito acolhedor e o
+                        resultado final sempre supera as expectativas."</p>
+                    <span class="review-time">2 semanas atrás</span>
+                </div>
+
+                <!-- Generated Review 7 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="André Souza"
+                            class="profile-photo">
+                        <div class="review-info">
+                            <h4>André Souza</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <a href="https://maps.app.goo.gl/Pbridr6CMUtfQGwL9" target="_blank" class="google-icon-link">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png"
+                                alt="Google" class="google-icon">
+                        </a>
+                    </div>
+                    <p class="review-text">"Melhor degradê da região! O pessoal é gente boa demais e o serviço é
+                        rápido
+                        e preciso. Recomendo!"</p>
+                    <span class="review-time">3 semanas atrás</span>
+                </div>
+
+                <!-- Generated Review 8 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="Ricardo Lima"
+                            class="profile-photo">
+                        <div class="review-info">
+                            <h4>Ricardo Lima</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <a href="https://maps.app.goo.gl/Pbridr6CMUtfQGwL9" target="_blank" class="google-icon-link">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png"
+                                alt="Google" class="google-icon">
+                        </a>
+                    </div>
+                    <p class="review-text">"Experiência fantástica. Desde a recepção até o corte, tudo perfeito. A
+                        cerveja gelada é um bônus!"</p>
+                    <span class="review-time">1 mês atrás</span>
+                </div>
+
+                <!-- Generated Review 9 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Bruno Alves"
+                            class="profile-photo">
+                        <div class="review-info">
+                            <h4>Bruno Alves</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <a href="https://maps.app.goo.gl/Pbridr6CMUtfQGwL9" target="_blank" class="google-icon-link">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png"
+                                alt="Google" class="google-icon">
+                        </a>
+                    </div>
+                    <p class="review-text">"Barbearia de primeira. Profissionais qualificados e ambiente muito
+                        estiloso.
+                        Virei cliente fixo."</p>
+                    <span class="review-time">2 meses atrás</span>
+                </div>
+
+                <!-- Generated Review 10 -->
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://randomuser.me/api/portraits/men/90.jpg" alt="Thiago Costa"
+                            class="profile-photo">
+                        <div class="review-info">
+                            <h4>Thiago Costa</h4>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <a href="https://maps.app.goo.gl/Pbridr6CMUtfQGwL9" target="_blank" class="google-icon-link">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png"
+                                alt="Google" class="google-icon">
+                        </a>
+                    </div>
+                    <p class="review-text">"Serviço impecável. O corte ficou exatamente como eu pedi. Parabéns a
+                        toda a
+                        equipe!"</p>
+                    <span class="review-time">3 meses atrás</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Scheduling Section -->
+    <section id="contact" class="scheduling-section">
+        <div class="overlay-scheduling"></div>
+        <div class="scheduling-content">
+            <h2>AGENDE SEU <span class="highlight">HORÁRIO</span></h2>
+            <p>Não perca tempo. Garanta seu visual com os melhores profissionais.</p>
+            <a href="https://wa.me/553171944816" class="btn-hero btn-scheduling">AGENDAR AGORA</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">BARBEARIA VIDA NOVA</div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/barbeariavidanova/"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/barbeariavidanova"><i class="fab fa-facebook"></i></a>
+                <a href="https://wa.me/553171944816"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p>&copy; 2025 Barbearia Vida Nova. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Video Modal -->
+    <div id="video-modal" class="video-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <video id="modal-video" controls playsinline>
+                <source src="" type="video/mp4">
+                Your browser does not support HTML5 video.
+            </video>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script
+        src="https://whatsa.me/bt-min.js?link=https://whatsa.me/553185198305/?t=Ol%C3%A1,%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20"></script>
+</body>
+
+</html>

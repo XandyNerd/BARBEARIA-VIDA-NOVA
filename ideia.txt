@@ -1,0 +1,29 @@
+Adicionar uma api do google maps cliente pode clicar e já abre o maps diretamente OK
+futuramente posso colocar junto um 360 da loja junto desse mapa do google maps
+
+
+adicionar tmb telefone pra contato o Instagram da loja
+Adicionar os horários de funcionamento e os dias da semana que funciona  OK
+colocar mais sobre cada barbeiro, uma biográfica sobre o porque ele corta cabelo, suas motivações
+
+adicionar uma aba que mostra produtos que a barbearia vende e um vídeo explicativo!
+
+adicionar uma aba de dicas do barbeiro
+
+colocar formas de pagamentos no rodapé do site
+
+
+talvez fazer um outro modelo de site que da a possibilidade da pessoa fazer a agendamento, dai quando for agendado o site tira esse horário
+
+bom posso oferecer uma versão mais simples, sem o sistema de agendamento site apenas com uma tela
+
+outra opção e o sistema de agendamento dai o cliente seleciona tudo e dps envia uma mensagem diretamente para barbearia com o horário agendado
+
+a por ultimo a opção mais complexa o sistema totalmente integrado entre cliente e barbeiro, fica tudo no sistema
+
+
+
+implementar um calendário com horários, eai o cliente seleciona o horário que gostaria e já envia pro whatsapp (versão 2.0)
+https://youtu.be/Mg4bbqvMNnA?si=0vkb3cw8KNtVi7FS
+
+vídeo sobre os protudos que ele vende e barba, talvez uma aba sobre cuidado de barba e cabelo
