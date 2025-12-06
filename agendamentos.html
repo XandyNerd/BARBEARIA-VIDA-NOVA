@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Agendamentos - Barbearia Vida Nova</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #121212;
+            color: #fff;
+            padding-bottom: 20px;
+        }
+
+        .container-page {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .section-header {
+            color: #d4af37;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            margin-top: 30px;
+            font-size: 1.2rem;
+        }
+
+        .appointment-card {
+            background: #1e1e1e;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid #333;
+            position: relative;
+        }
+
+        .appointment-card.upcoming {
+            border-left-color: #d4af37;
+            background: #252525;
+        }
+
+        .appointment-card.done {
+            border-left-color: #2ecc71;
+            opacity: 0.8;
+        }
+
+        .appointment-card.cancelled {
+            border-left-color: #e74c3c;
+            opacity: 0.6;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .appt-service {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .appt-date {
+            color: #d4af37;
+            font-weight: 600;
+        }
+
+        .card-body p {
+            margin: 5px 0;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+
+        .card-footer {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .btn-sm {
+            padding: 8px 12px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+        }
+
+        .btn-sm:hover,
+        .btn-back:hover,
+        .btn-action:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-sm:active,
+        .btn-back:active,
+        .btn-action:active {
+            transform: translateY(0) scale(0.95);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-view {
+            background: #444;
+            color: #fff;
+        }
+
+        .btn-cancel {
+            background: #ab2e2e;
+            color: #fff;
+        }
+
+        .btn-reschedule {
+            background: #d4af37;
+            color: #000;
+        }
+
+        .btn-back {
+            color: #fff;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+
+        .btn-back:hover {
+            opacity: 0.8;
+            transform: translateX(-3px);
+            /* Subtle move left indicating back */
+            box-shadow: none;
+            /* Override generic shadow */
+        }
+
+        .btn-action {
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-action.btn-secondary {
+            background: #444;
+            color: #fff;
+        }
+
+        .btn-action.btn-danger {
+            background: #e74c3c;
+            color: #fff;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.3s;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-content {
+            background: #1e1e1e;
+            padding: 25px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-title {
+            color: #d4af37;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            color: #999;
+        }
+
+        .detail-value {
+            font-weight: bold;
+            text-align: right;
+        }
+
+        .modal-actions {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Status Badge */
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 5px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .status-badge.confirmed {
+            background-color: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+            border-color: #2ecc71;
+        }
+
+        .status-badge.cancelled {
+            background-color: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+            border-color: #e74c3c;
+        }
+
+        .status-badge.finished {
+            background-color: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+            border-color: #2ecc71;
+        }
+
+        .status-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(46, 204, 113, 0.4);
+        }
+
+        .status-badge.cancelled:hover {
+            box-shadow: 0 0 10px rgba(231, 76, 60, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-page">
+        <div class="header-top">
+            <a href="perfil.html" class="btn-back"><i class="fas fa-arrow-left"></i> Voltar</a>
+            <h2>Meus Agendamentos</h2>
+        </div>
+
+        <div id="loading" style="text-align: center; margin-top: 50px;">
+            <i class="fas fa-spinner fa-spin fa-2x" style="color: #d4af37;"></i>
+        </div>
+
+        <div id="content" style="display: none;">
+            <!-- Next Appointment -->
+            <div id="next-appointment-section">
+                <!-- Injected via JS -->
+            </div>
+
+            <!-- History -->
+            <h3 class="section-header">Histórico</h3>
+            <div id="history-section">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Details Modal -->
+    <div id="details-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h3 class="modal-title">Detalhes do Agendamento</h3>
+            <div id="modal-body">
+                <!-- Details here -->
+            </div>
+            <div class="modal-actions" id="modal-actions">
+                <!-- Actions here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script>
+        const formatDate = (dateStr) => {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+        };
+
+        const formatPrice = (price) => {
+            // Price stored in cents usually, but let's assume raw number for now based on context or cents? 
+            // The prompt said cents in Schema, but let's just display what we get formatted nicely.
+            // If stored as INTEGER cents:
+            return (price / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        };
+
+        let currentAppointments = [];
+
+        async function loadAppointments() {
+            try {
+                // Add timestamp to prevent caching
+                const t = new Date().getTime();
+                currentAppointments = await api.get(`/appointments/my?t=${t}`);
+                renderAppointments(currentAppointments);
+            } catch (error) {
+                console.error(error);
+                document.getElementById('loading').textContent = 'Erro ao carregar agendamentos.';
+            }
+        }
+
+        function renderAppointments(list) {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+
+            const nextSection = document.getElementById('next-appointment-section');
+            const historySection = document.getElementById('history-section');
+
+            nextSection.innerHTML = '';
+            historySection.innerHTML = '';
+
+            const now = new Date();
+            let hasUpcoming = false;
+
+            // Sort logic handled by backend mostly (DESC), but for "Next" we want nearest future.
+            // Let's filter client side to separate upcoming vs history.
+
+            const upcoming = list.filter(appt => new Date(appt.date_time) > now && appt.status !== 'Cancelado').sort((a, b) => new Date(a.date_time) - new Date(b.date_time));
+            const history = list.filter(appt => new Date(appt.date_time) <= now || appt.status === 'Cancelado' || appt.status === 'Finalizado');
+
+            // Render ALL Upcoming Appointments
+            if (upcoming.length > 0) {
+                nextSection.innerHTML = `<h3 class="section-header">Próximos Agendamentos</h3>`;
+
+                upcoming.forEach(appt => {
+                    const card = document.createElement('div');
+                    card.className = 'appointment-card upcoming';
+                    card.innerHTML = `
+                        <div class="card-header">
+                            <span class="appt-service">${appt.service}</span>
+                            <div style="text-align: right;">
+                                <div class="appt-date"><i class="far fa-clock"></i> ${formatDate(appt.date_time)}</div>
+                                <div class="status-badge confirmed">Confirmado</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p><i class="fas fa-cut"></i> Profissional: ${appt.barber_name || 'Não especificado'}</p>
+                            <p><i class="fas fa-map-marker-alt"></i> ${appt.barber_shop || 'Unidade'}</p>
+                            <p><i class="fas fa-tag"></i> ${formatPrice(appt.price)}</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn-sm btn-reschedule" onclick="reschedule(${appt.id})">Reagendar</button>
+                            <button class="btn-sm btn-cancel" onclick="cancel(${appt.id})">Cancelar</button>
+                        </div>
+                    `;
+                    nextSection.appendChild(card);
+                });
+            } else {
+                nextSection.innerHTML = `
+                    <h3 class="section-header">Próximos Agendamentos</h3>
+                    <div class="appointment-card">
+                        <p style="text-align:center; padding: 20px; color: #888;">Nenhum agendamento futuro.</p>
+                    </div>
+                 `;
+            }
+
+            // History rendering continues below...
+            // Render History
+            if (history.length === 0 && list.length === 0) {
+                historySection.innerHTML = `<p style="text-align:center; color:#666;">Histórico vazio.</p>`;
+            } else {
+                history.forEach(appt => {
+                    let statusClass = 'done';
+                    if (appt.status === 'Cancelado') statusClass = 'cancelled';
+
+                    historySection.innerHTML += `
+                        <div class="appointment-card ${statusClass}">
+                            <div class="card-header">
+                                <span class="appt-service">${appt.service}</span>
+                                <div style="text-align: right;">
+                                    <div class="appt-date">${formatDate(appt.date_time)}</div>
+                                    <div class="status-badge ${statusClass === 'cancelled' ? 'cancelled' : 'finished'}">${appt.status}</div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <p>${appt.barber_name}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        function openDetails(id) {
+            const appt = currentAppointments.find(a => a.id === id);
+            if (!appt) return;
+
+            const modalBody = document.getElementById('modal-body');
+            modalBody.innerHTML = `
+                <div class="detail-row"><span class="detail-label">Serviço</span><span class="detail-value">${appt.service}</span></div>
+                <div class="detail-row"><span class="detail-label">Data/Hora</span><span class="detail-value">${formatDate(appt.date_time)}</span></div>
+                <div class="detail-row"><span class="detail-label">Barbeiro</span><span class="detail-value">${appt.barber_name}</span></div>
+                <div class="detail-row"><span class="detail-label">Unidade</span><span class="detail-value">${appt.barber_shop}</span></div>
+                <div class="detail-row"><span class="detail-label">Preço</span><span class="detail-value">${formatPrice(appt.price)}</span></div>
+                <div class="detail-row"><span class="detail-label">Status</span><span class="detail-value">${appt.status}</span></div>
+            `;
+
+            const actions = document.getElementById('modal-actions');
+            actions.innerHTML = '';
+
+            if (appt.status !== 'Cancelado' && appt.status !== 'Finalizado') {
+                actions.innerHTML = `
+                    <button class="btn-action btn-reschedule" onclick="reschedule(${appt.id})">Reagendar</button>
+                    <button class="btn-action btn-danger" onclick="cancel(${appt.id})">Cancelar Agendamento</button>
+                `;
+            }
+            actions.innerHTML += `<button class="btn-action btn-secondary" onclick="closeModal()">Voltar</button>`;
+
+            document.getElementById('details-modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('details-modal').classList.remove('active');
+        }
+
+        async function cancel(id) {
+            if (!confirm('Tem certeza que deseja cancelar?')) return;
+            try {
+                await api.patch(`/appointments/${id}/cancel`);
+                alert('Agendamento cancelado.');
+                closeModal();
+                loadAppointments();
+            } catch (error) {
+                alert(error.message);
+            }
+        }
+
+        function reschedule(id) {
+            // Redirect to agenda with params
+            // Since agenda is a creation page, maybe we just cancel and rebook? 
+            // Or passing ID allows us to update. 
+            // Requirement says: "Reagendar -> takes the user back to agenda.html but passing the current appointment ID"
+            window.location.href = `agendar.html?reschedule=${id}`;
+        }
+
+        loadAppointments();
+    </script>
+</body>
+
+</html>

@@ -1488,11 +1488,10 @@ header {
     margin-bottom: 1.5rem;
 }
 
-.btn-whatsapp {
+.btn-agendar {
     display: inline-block;
     padding: 0.8rem 1.5rem;
-    background-color: #25D366;
-    /* WhatsApp Green */
+    background-color: #f4c542;
     color: #fff;
     border-radius: 4px;
     font-weight: 600;
@@ -1503,12 +1502,12 @@ header {
     text-align: center;
 }
 
-.btn-whatsapp:hover {
-    background-color: #128C7E;
+.btn-agendar:hover {
+    background-color: #0f0f0f;
     transform: translateY(-2px);
 }
 
-.btn-whatsapp i {
+.btn-agendar i {
     margin-right: 8px;
     font-size: 1.1rem;
 }
@@ -1679,6 +1678,7 @@ footer p {
     margin-bottom: 1.5rem;
     display: -webkit-box;
     -webkit-line-clamp: 4;
+    line-clamp: 4;
     /* Limit lines */
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -2002,4 +2002,138 @@ footer p {
     opacity: 1;
     transform: translateY(0);
     padding-bottom: 1rem;
+}
+
+/* Footer Redesign */
+.main-footer {
+    background-color: var(--bg-color);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.bottom-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.developer-credit a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.developer-credit a:hover {
+    color: var(--primary-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2.5rem;
+    }
+
+    .contact-list li {
+        justify-content: center;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    .bottom-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Scroll Animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Custom Alert Modal Styles (Shared) */
+.custom-alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.custom-alert-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.custom-alert-box {
+    background: #1a1a1a;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid var(--primary-color);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    transform: scale(0.8);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.custom-alert-overlay.show .custom-alert-box {
+    transform: scale(1);
+}
+
+.alert-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+#custom-alert-message {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.btn-alert {
+    background: var(--primary-color);
+    color: var(--bg-color);
+    border: none;
+    padding: 0.8rem 2.5rem;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+}
+
+.btn-alert:hover {
+    background: #fff;
+    color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
 }

@@ -158,20 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
             hoverVideo.muted = false;
             hoverVideo.currentTime = 0;
 
-            var playPromise = hoverVideo.play();
-            if (playPromise !== undefined) {
-                playPromise.then(_ => {
-                    if (!isHovering) {
-                        hoverVideo.pause();
-                        hoverVideo.currentTime = 0;
-                        hoverVideo.muted = true;
-                        hoverVideo.style.opacity = '0';
-                    }
-                })
-                    .catch(error => {
-                        console.log("Auto-play foi impedido.", error);
-                    });
-            }
+ 
         });
 
         videoContainer.addEventListener('mouseleave', () => {
@@ -182,45 +169,11 @@ document.addEventListener('DOMContentLoaded', () => {
             hoverVideo.muted = true;
         });
 
-        // Clique abre o modal
-        videoContainer.addEventListener('click', (e) => {
-            e.preventDefault();
-            if (videoModal && modalVideo) {
-                videoModal.style.display = 'flex';
-                modalVideo.src = hoverVideo.src;
-                modalVideo.muted = false;
-                modalVideo.play();
-            }
-        });
 
-        // Suporte para toque no celular
-        videoContainer.addEventListener('touchstart', (e) => {
-            if (hoverVideo.style.opacity !== '1' || hoverVideo.paused) {
-                e.preventDefault();
-                hoverVideo.style.opacity = '1';
-                hoverVideo.muted = false;
-                hoverVideo.currentTime = 0;
-                hoverVideo.play();
-            }
-        });
+
     }
 
-    // Lógica de fechar o modal
-    if (closeModal && videoModal && modalVideo) {
-        closeModal.addEventListener('click', () => {
-            videoModal.style.display = 'none';
-            modalVideo.pause();
-            modalVideo.currentTime = 0;
-        });
-
-        window.addEventListener('click', (e) => {
-            if (e.target === videoModal) {
-                videoModal.style.display = 'none';
-                modalVideo.pause();
-                modalVideo.currentTime = 0;
-            }
-        });
-    }
+ 
 
     // Lógica do Carrossel de Vídeos
     const track = document.querySelector('.carousel-track');
@@ -334,7 +287,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // SERVIÇOS PRESTADO E VALORES (CABELO)
+    // SERVIÇOS PRESTADO E VALORES 
     const servicesData = {
         "cabelo": [
             { type: 'header', name: '✅ Serviços Individuais' },
@@ -416,8 +369,21 @@ document.addEventListener('DOMContentLoaded', () => {
                             </div>
                             <span class="service-price">${item.price}</span>
                         </div>
-                    `}).join("");
+                    `}).join("") + `
+                        <div style="text-align: center; margin-top: 2rem;">
+                            <button id="modal-ok-btn" class="btn-hero" style="min-width: 120px;">OK</button>
+                        </div>
+                    `;
+
                     servicesModal.style.display = "block";
+
+                    // Add listener to the new button
+                    const okBtn = document.getElementById('modal-ok-btn');
+                    if (okBtn) {
+                        okBtn.addEventListener('click', () => {
+                            servicesModal.style.display = "none";
+                        });
+                    }
                 }
             });
         });
@@ -432,82 +398,106 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Scroll Animation Logic
+    function initScrollAnimations() {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+
+    initScrollAnimations();
 });
 
 // Lógica do Carrossel de Avaliações
 const reviewsCarousel = document.getElementById('reviewsCarousel');
 
 if (reviewsCarousel) {
-    // Rolagem arrastando (mouse)
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+    let autoScrollInterval;
+    const scrollDelay = 3000; // Tempo entre cada troca (3 segundos)
 
-    reviewsCarousel.addEventListener('mousedown', (e) => {
-        isDown = true;
-        reviewsCarousel.classList.add('active');
-        startX = e.pageX - reviewsCarousel.offsetLeft;
-        scrollLeft = reviewsCarousel.scrollLeft;
-    });
-    reviewsCarousel.addEventListener('mouseleave', () => {
-        isDown = false;
-        reviewsCarousel.classList.remove('active');
-        startAutoScroll();
-    });
-    reviewsCarousel.addEventListener('mouseup', () => {
-        isDown = false;
-        reviewsCarousel.classList.remove('active');
-        startAutoScroll();
-    });
-    reviewsCarousel.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - reviewsCarousel.offsetLeft;
-        const walk = (x - startX) * 2;
-        reviewsCarousel.scrollLeft = scrollLeft - walk;
-    });
+    const getCardWidth = () => {
+        const card = reviewsCarousel.querySelector('.review-card');
+        if (!card) return 0;
+        const style = window.getComputedStyle(reviewsCarousel);
+        const gap = parseFloat(style.gap) || 0;
+        return card.offsetWidth + gap;
+    };
 
-    // Eventos de toque para celular
-    reviewsCarousel.addEventListener('touchstart', (e) => {
-        isDown = true;
-        startX = e.touches[0].pageX - reviewsCarousel.offsetLeft;
-        scrollLeft = reviewsCarousel.scrollLeft;
-        stopAutoScroll();
-    });
-    reviewsCarousel.addEventListener('touchend', () => {
-        isDown = false;
-        startAutoScroll();
-    });
-    reviewsCarousel.addEventListener('touchmove', (e) => {
-        if (!isDown) return;
-        const x = e.touches[0].pageX - reviewsCarousel.offsetLeft;
-        const walk = (x - startX) * 2;
-        reviewsCarousel.scrollLeft = scrollLeft - walk;
-    });
+    const scrollToNext = () => {
+        const cardWidth = getCardWidth();
+        if (cardWidth === 0) return;
 
-    // Rolagem automática
-    let autoScrollTimer;
-    const scrollStep = 1;
-    const scrollInterval = 30;
+        // Verifica se chegou ao final
+        if (reviewsCarousel.scrollLeft + reviewsCarousel.clientWidth >= reviewsCarousel.scrollWidth - 10) {
+            // Volta para o início suavemente
+            reviewsCarousel.scrollTo({
+                left: 0,
+                behavior: 'smooth'
+            });
+        } else {
+            // Vai para o próximo card
+            reviewsCarousel.scrollBy({
+                left: cardWidth,
+                behavior: 'smooth'
+            });
+        }
+    };
 
     const startAutoScroll = () => {
         stopAutoScroll();
-        autoScrollTimer = setInterval(() => {
-            if (!isDown) {
-                reviewsCarousel.scrollLeft += scrollStep;
-                if (reviewsCarousel.scrollLeft >= (reviewsCarousel.scrollWidth - reviewsCarousel.clientWidth)) {
-                    reviewsCarousel.scrollLeft = 0;
-                }
-            }
-        }, scrollInterval);
+        autoScrollInterval = setInterval(scrollToNext, scrollDelay);
     };
 
     const stopAutoScroll = () => {
-        clearInterval(autoScrollTimer);
+        clearInterval(autoScrollInterval);
     };
+    
 
+    // Inicia a rotação automática
     startAutoScroll();
 
-    // Pausar ao passar o mouse
+    // Pausa a rotação quando o usuário interage
     reviewsCarousel.addEventListener('mouseenter', stopAutoScroll);
+    reviewsCarousel.addEventListener('touchstart', stopAutoScroll, { passive: true });
+
+    // Retoma a rotação quando o usuário para de interagir
+    reviewsCarousel.addEventListener('mouseleave', startAutoScroll);
+    reviewsCarousel.addEventListener('touchend', startAutoScroll);
+
+    // Opcional: Pausar enquanto estiver fazendo scroll manual
+    let isScrolling;
+    reviewsCarousel.addEventListener('scroll', () => {
+        stopAutoScroll();
+        clearTimeout(isScrolling);
+        isScrolling = setTimeout(() => {
+            // Só retoma se não estiver com o mouse em cima (para desktop)
+            if (!reviewsCarousel.matches(':hover')) {
+                startAutoScroll();
+            }
+        }, 150);
+    }, { passive: true });
+
+    document.querySelectorAll('.interactive-image-container').forEach(container => {
+    const img1 = container.querySelector('.static-img');
+    const img2 = container.querySelector('.hover-img');
+
+    container.addEventListener('mouseenter', () => {
+        img1.style.opacity = "0";
+        img2.style.opacity = "1";
+    });
+
+    container.addEventListener('mouseleave', () => {
+        img1.style.opacity = "1";
+        img2.style.opacity = "0";
+    });
+});
+
+    
 }

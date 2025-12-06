@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Horário - Barbearia Vida Nova</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="agendar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Background Video -->
+    <div class="video-background-fixed">
+        <video autoplay muted loop playsinline id="bg-video-fixed">
+            <source src="Videofundo/AgendaVideoFundo.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        <div class="overlay-fixed"></div>
+    </div>
+
+    <!-- Header / Nav -->
+    <header>
+        <nav class="navbar">
+            <div class="logo-container">
+                <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
+                    <img src="logo/lobobarbearia.jpg" alt="Logo" class="nav-logo-img">
+                    <div class="logo">BARBEARIA VIDA NOVA</div>
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Voltar ao Início</a></li>
+            </ul>
+            <div class="hamburger">
+                <a href="index.html" style="color: white;"><i class="fas fa-arrow-left"></i></a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Scheduling Form Section -->
+    <section class="scheduling-page-section">
+        <div class="scheduling-container reveal">
+            <h2>Agende seu <span class="highlight">Horário</span></h2>
+
+            <form id="scheduling-form">
+                <!-- Serviço Tempo e preço // Horário -->
+                <div class="form-group">
+                    <label>Serviço</label>
+                    <div class="custom-select" id="custom-service-select">
+                        <div class="select-trigger">
+                            <span id="select-trigger-text">Selecione o serviço</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="select-options">
+                            <div class="optgroup-label">Cabelo</div>
+                            <div class="option" data-value="Corte Masculino">
+                                <div class="service-row">
+                                    <span class="service-name">Corte Masculino</span>
+                                    <span class="service-price">R$ 40</span>
+                                </div>
+                                <span class="service-time">35min</span>
+                            </div>
+                            <div class="option" data-value="Corte + Barba">
+                                <div class="service-row">
+                                    <span class="service-name">Corte + Barba</span>
+                                    <span class="service-price">R$ 75</span>
+                                </div>
+                                <span class="service-time">50min</span>
+                            </div>
+                            <div class="option" data-value="Corte + Sobrancelha">
+                                <div class="service-row">
+                                    <span class="service-name">Corte + Sobrancelha</span>
+                                    <span class="service-price">R$ 55</span>
+                                </div>
+                                <span class="service-time">45min</span>
+                            </div>
+                            <div class="option" data-value="Corte + Barba + Sobrancelha">
+                                <div class="service-row">
+                                    <span class="service-name">Corte + Barba + Sobrancelha</span>
+                                    <span class="service-price">R$ 90</span>
+                                </div>
+                                <span class="service-time">1h 05min</span>
+                            </div>
+
+                            <div class="optgroup-label">Barba</div>
+                            <div class="option" data-value="Barba">
+                                <div class="service-row">
+                                    <span class="service-name">Barba</span>
+                                    <span class="service-price">R$ 35</span>
+                                </div>
+                                <span class="service-time">30min</span>
+                            </div>
+                            <div class="option" data-value="Barba + Pezinho">
+                                <div class="service-row">
+                                    <span class="service-name">Barba + Pezinho</span>
+                                    <span class="service-price">R$ 50</span>
+                                </div>
+                                <span class="service-time">40min</span>
+                            </div>
+
+                            <div class="optgroup-label">Sobrancelha</div>
+                            <div class="option" data-value="Design Sobrancelha">
+                                <div class="service-row">
+                                    <span class="service-name">Design Sobrancelha</span>
+                                    <span class="service-price">R$ 20</span>
+                                </div>
+                                <span class="service-time">15min</span>
+                            </div>
+
+                            <div class="optgroup-label">Química</div>
+                            <div class="option" data-value="Botox">
+                                <div class="service-row">
+                                    <span class="service-name">Botox</span>
+                                    <span class="service-price">R$ 80</span>
+                                </div>
+                                <span class="service-time">1h</span>
+                            </div>
+                            <div class="option" data-value="Progressiva">
+                                <div class="service-row">
+                                    <span class="service-name">Progressiva</span>
+                                    <span class="service-price">R$ 100</span>
+                                </div>
+                                <span class="service-time">1h 30min</span>
+                            </div>
+                            <div class="option" data-value="Corte + Botox">
+                                <div class="service-row">
+                                    <span class="service-name">Corte + Botox</span>
+                                    <span class="service-price">R$ 110</span>
+                                </div>
+                                <span class="service-time">1h 30min</span>
+                            </div>
+                            <div class="option" data-value="Corte + Progressiva">
+                                <div class="service-row">
+                                    <span class="service-name">Corte + Progressiva</span>
+                                    <span class="service-price">R$ 130</span>
+                                </div>
+                                <span class="service-time">2h</span>
+                            </div>
+
+                            <div class="option" data-value="Outros">Outros (Especificar)</div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="service">
+                </div>
+
+                <!-- Outros Serviços (Condicional) -->
+                <div class="form-group hidden" id="other-service-container">
+                    <label for="other-service">Qual serviço deseja?</label>
+                    <input type="text" id="other-service" class="form-control" placeholder="Digite o nome do serviço">
+                </div>
+
+                <!-- Barbeiro (Custom Dropdown) -->
+                <div class="form-group">
+                    <label>Barbeiro de preferência</label>
+                    <div class="custom-select" id="custom-barber-select">
+                        <div class="select-trigger">
+                            <span id="barber-trigger-text">Selecione o barbeiro</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="select-options">
+                            <div class="option" data-value="Gustavo">Gustavo</div>
+                            <div class="option" data-value="Uri">Uri (Master Barber)</div>
+                            <div class="option" data-value="Marcelo">Marcelo</div>
+                            <div class="option" data-value="Qualquer barbeiro disponível">Qualquer barbeiro
+                                disponível
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="barber">
+                </div>
+
+                <!-- Local (Custom Dropdown) -->
+                <div class="form-group">
+                    <label>Unidade</label>
+                    <div class="custom-select" id="custom-location-select">
+                        <div class="select-trigger">
+                            <span id="location-trigger-text">Selecione a unidade</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="select-options">
+                            <div class="option" data-value="Unidade Milionários">Unidade Milionários</div>
+                            <div class="option" data-value="Unidade Flávio Marques Lisboa">Unidade Flávio Marques
+                                Lisboa
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" id="location">
+                </div>
+
+                <!-- Data -->
+                <div class="form-group">
+                    <label>Data</label>
+                    <div class="calendar-wrapper">
+                        <div class="calendar-header">
+                            <button type="button" id="prev-month"><i class="fas fa-chevron-left"></i></button>
+                            <span id="current-month"></span>
+                            <button type="button" id="next-month"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="calendar-grid" id="calendar-grid">
+                            <!-- Days will be generated by JS -->
+                        </div>
+                    </div>
+                    <input type="hidden" id="selected-date" required>
+                </div>
+
+                <!-- Horário -->
+                <div class="form-group">
+                    <label>Horário</label>
+                    <div class="time-picker-wrapper">
+                        <div class="time-picker-selection-bar"></div>
+                        <ul class="time-picker-list" id="time-picker-list">
+                            <!-- Times will be generated by JS -->
+                        </ul>
+                    </div>
+                    <input type="hidden" id="selected-time" required>
+                </div>
+
+                <!-- Observações -->
+                <div class="form-group">
+                    <label for="observations">Observações (Opcional)</label>
+                    <textarea id="observations" class="form-control"
+                        placeholder="Alguma preferência especial?"></textarea>
+                </div>
+
+                <!-- Botão Enviar -->
+                <button type="submit" class="btn-submit" id="btn-submit-agenda">
+                    <i class="fas fa-calendar-check"></i> Confirmar Agendamento
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <!-- (Existing Footer Content Omitted for brevity, assuming tool keeps context or I only replace form button/script integration) -->
+        <!-- Actually, replacing just the form submission logic in JS is better, but I need to ensure the HTML button doesn't say "Enviar pelo WhatsApp" -->
+
+        <footer>
+            <div class="container footer-content">
+                <div class="social-links">
+                    <h3>LINKS RÁPIDOS</h3>
+                    <a href="https://www.instagram.com/barbeariavidanova/"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/barbeariavidanova"><i class="fab fa-facebook"></i></a>
+                    <a href="https://wa.me/5531971944816"><i class="fab fa-whatsapp"></i></a>
+
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Agendar Horário - Barbearia Vida Nova</title>
+                        <link rel="preconnect" href="https://fonts.googleapis.com">
+                        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap"
+                            rel="stylesheet">
+                        <link rel="stylesheet" href="style.css">
+                        <link rel="stylesheet" href="agendar.css">
+                        <link rel="stylesheet"
+                            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+                    </head>
+
+                    <body>
+
+                        <!-- Background Video -->
+                        <div class="video-background-fixed">
+                            <video autoplay muted loop playsinline id="bg-video-fixed">
+                                <source src="AgendaVideoFundo.mp4" type="video/mp4">
+                                Your browser does not support HTML5 video.
+                            </video>
+                            <div class="overlay-fixed"></div>
+                        </div>
+
+                        <!-- Header / Nav -->
+                        <header>
+                            <nav class="navbar">
+                                <div class="logo-container">
+                                    <a href="index.html"
+                                        style="display: flex; align-items: center; text-decoration: none;">
+                                        <img src="logo/lobobarbearia.jpg" alt="Logo" class="nav-logo-img">
+                                        <div class="logo">BARBEARIA VIDA NOVA</div>
+                                    </a>
+                                </div>
+                                <ul class="nav-links">
+                                    <li><a href="index.html">Voltar ao Início</a></li>
+                                </ul>
+                                <div class="hamburger">
+                                    <a href="index.html" style="color: white;"><i class="fas fa-arrow-left"></i></a>
+                                </div>
+                            </nav>
+                        </header>
+
+
+                </div>
+                </section>
+
+                <!-- Rodapé -->
+                <footer>
+                    <div class="container footer-grid">
+                        <!-- Coluna 1: Marca -->
+                        <div class="footer-col brand-col">
+                            <div class="footer-logo">BARBEARIA VIDA NOVA</div>
+                            <p class="footer-tagline">Mais do que um corte, uma experiência de estilo e tradição.
+                            </p>
+                        </div>
+
+                        <!-- Coluna 2: Contato -->
+                        <div class="footer-col contact-col">
+                            <ul class="contact-list">
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <a href="https://maps.app.goo.gl/Pbridr6CMUtfQGwL9" target="_blank">
+                                        Rua Amílcar Cabral, 401 - Milionários<br>Belo Horizonte - MG
+                                    </a>
+                                </li>
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <a href="https://maps.app.goo.gl/UVuQEN1YR12ZmDxP8" target="_blank">
+                                        R. Santa Claúdia, 357 - Flávio Marques Lisboa
+                                        <br>Belo Horizonte - MG
+                                    </a>
+                                </li>
+                                <li>
+                                    <i class="fas fa-phone-alt"></i>
+                                    <span>(31) 97194-4816</span>
+                                </li>
+                                <li>
+
+                                    <!-- Horário de funcionamento roda pé-->
+                                    <i class="fas fa-clock"></i>
+                                    <span>Ter a Sáb: 08:00 - 20:00</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Coluna 3: Navegação -->
+                        <div class="footer-col nav-col">
+
+                            <ul class="footer-links">
+                                <div class="footer-bottom">
+                                    <div class="container bottom-content">
+                                        <p>&copy; 2025 Barbearia Vida Nova. Todos os direitos reservados.</p>
+                                        <p class="developer-credit">
+                                            Desenvolvido por <a href="https://linktr.ee/AlexandreSilvaFerreira"
+                                                title="Portfólio em breve">Alexandre Silva
+                                                Ferreira</a>
+                                        </p>
+                                    </div>
+                                </div>
+                </footer>
+
+                <!-- Custom Alert Modal -->
+                <div id="custom-alert" class="custom-alert-overlay hidden">
+                    <div class="custom-alert-box">
+                        <div class="alert-icon">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <p id="custom-alert-message">Mensagem aqui</p>
+                        <button id="custom-alert-ok" class="btn-alert">OK</button>
+                    </div>
+                </div>
+
+                <!-- Conflict Modal -->
+                <div id="conflict-modal" class="custom-alert-overlay hidden">
+                    <div class="custom-alert-box">
+                        <div class="alert-icon">
+                            <i class="fas fa-exclamation" style="font-size: 2rem;"></i>
+                        </div>
+                        <p id="conflict-message"
+                            style="margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.5; color: #fff;"></p>
+                        <div class="conflict-buttons" style="display: flex; justify-content: center; margin-top: 10px;">
+                            <button id="conflict-yes" class="btn-alert">Sim</button>
+                            <button id="conflict-no" class="btn-alert"
+                                style="background: transparent; border: 2px solid var(--primary-color); color: var(--primary-color);">Não</button>
+                        </div>
+                    </div>
+                </div>
+
+                <script src="js/api.js"></script>
+                <script src="agendamento.js"></script>
+</body>
+
+</html>

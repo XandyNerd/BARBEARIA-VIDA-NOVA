@@ -4,12 +4,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barbearia Vida Nova</title>
+
+    <!-- SEO Local -->
+    <title>Barbearia Vida Nova | Barbearia no Barreiro - Belo Horizonte</title>
+    <meta name="description"
+        content="Barbearia Vida Nova no Barreiro, Belo Horizonte. Corte masculino, barba, sobrancelha, atendimento exclusivo e agendamento online rápido e fácil.">
+    <meta name="keywords"
+        content="barbearia barreiro, barbearia no barreiro bh, barbeiro no barreiro, corte masculino barreiro, barbeiro perto de mim, barbearia vida nova barreiro, corte de cabelo bh barreiro">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="pt-BR">
+    <meta name="author" content="Barbearia Vida Nova">
+    <meta name="theme-color" content="#000000">
+
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- SEO Avançado: Dados Estruturados (Google) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Barbershop",
+        "name": "Barbearia Vida Nova",
+        "image": "https://meu-site.com/logo.jpg",
+        "url": "https://seu-site.com",
+        "telephone": "+55 31 7194-4816",
+        "priceRange": "$$",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Rua Amílcar Cabral, 401 - Bairro Milionários",
+            "addressLocality": "Belo Horizonte",
+            "addressRegion": "MG",
+            "postalCode": "30664-350",
+            "addressCountry": "BR"
+        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday"
+                ],
+                "opens": "08:00",
+                "closes": "20:00"
+            }
+        ]
+    }
+    </script>
 </head>
 
 <body>
@@ -18,16 +66,21 @@
     <header>
         <nav class="navbar">
             <div class="logo-container">
-                <img src="lobobarbearia.jpg" alt="Logo" class="nav-logo-img">
+                <img src="logo/lobobarbearia.jpg" alt="Logo" class="nav-logo-img">
                 <div class="logo">BARBEARIA VIDA NOVA</div>
             </div>
             <ul class="nav-links">
+                <li><a href="#about">Sobre</a></li>
+                <!-- Optional anchor if needed, but sticking to existing structure -->
                 <li><a href="#home">Início</a></li>
                 <li><a href="#premium">Premium</a></li>
                 <li><a href="#team">Equipe</a></li>
                 <li><a href="#services">Serviços</a></li>
                 <li><a href="#hours">Horários</a></li>
-                <li><a href="https://wa.me/553171944816" class="btn-nav">Agendar</a></li>
+                <li><a href="agendar.html" class="btn-nav">Agendar</a></li>
+                <li id="auth-container" style="display: flex; gap: 10px; align-items: center;">
+                    <!-- Auth buttons injected by JS -->
+                </li>
             </ul>
             <div class="hamburger">
                 <i class="fas fa-bars"></i>
@@ -46,7 +99,7 @@
         <div class="video-background">
             <!-- Placeholder video. User needs to replace 'assets/hero-video.mp4' with actual file -->
             <video autoplay muted loop playsinline id="bg-video">
-                <source src="videodefundo.mp4" type="video/mp4">
+                <source src="Videofundo/videodefundo.mp4" type="video/mp4">
                 Your browser does not support HTML5 video.
             </video>
             <div class="overlay"></div>
@@ -54,13 +107,13 @@
         <div class="hero-content">
             <h1>ESTILO & <br> <span class="highlight">TRADIÇÃO</span></h1>
             <p>Mais do que um corte, uma experiência.</p>
-            <a href="https://wa.me/553171944816" class="btn-hero">AGENDAR HORÁRIO</a>
+            <a href="agendar.html" class="btn-hero">AGENDAR HORÁRIO</a>
         </div>
     </section>
 
     <!-- Premium Service Section -->
     <section id="premium" class="premium-section">
-        <div class="container">
+        <div class="container reveal">
             <h2>EXPERIÊNCIA <span class="highlight">PREMIUM</span></h2>
 
             <div class="premium-content">
@@ -94,14 +147,13 @@
                         </ul>
                     </div>
 
-                    <a href="https://wa.me/553171944816" class="btn-hero btn-premium">CONSULTAR DISPONIBILIDADE</a>
+                    <a href="https://wa.me/553171944816?text=Ol%C3%A1!%20Tudo%20bem%3F%20Vi%20que%20voc%C3%AAs%20oferecem%20o%20Atendimento%20Exclusivo%20e%20fiquei%20bem%20interessado.%0APoderiam%20me%20passar%20mais%20detalhes%20sobre%20como%20funciona%2C%20os%20valores%20e%20quais%20s%C3%A3o%20as%20pr%C3%B3ximas%20disponibilidades%3F"
+                        class="btn-hero btn-premium" target="_blank">CONSULTAR DISPONIBILIDADE</a>
                 </div>
 
                 <div class="premium-video">
-                    <video id="service-video" controls autoplay muted loop playsinline>
-                        <source src="atendvideo01.mp4" type="video/mp4">
-                        Your browser does not support HTML5 video.
-                    </video>
+                    <iframe src="AtendimentoExclusivo/AtendVideo01.mp4" width="100%" height="480" allow="autoplay"
+                        style="border:none; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);"></iframe>
                 </div>
             </div>
 
@@ -111,59 +163,120 @@
 
     <!-- Time de barbeiros -->
     <section id="team" class="team-section">
-        <div class="container">
+        <div class="container reveal">
             <h2>NOSSA <span class="highlight">EQUIPE</span></h2>
-            <div class="team-grid">
+
+
+
+
+
+
+            <div class="team-grid"> <!-- Separa os barbeiros -->
+
+
+                <!-- 
+                            COMENTÁRIO IMPORTANTE:
+                            Para alterar a unidade pré-selecionada, mude o valor de 'barbearia' na URL abaixo.
+                            Os valores devem ser exatamente iguais aos do select em agendar.html:
+                            - "Unidade Milionários"
+                            - "Unidade Flávio Marques Lisboa"
+                            Se no futuro houver apenas uma unidade, você pode remover o parâmetro '&barbearia=...' ou ajustar o código para ignorá-lo.
+                         -->
+
+
+
+                <!-- Barbeiro Uri -->
                 <div class="team-card">
                     <div class="team-img interactive-video-container">
-                        <img src="gustavobarber.png" alt="Barbeiro 1" class="static-img">
-                        <video src="atendvideo02.mp4" loop playsinline class="hover-video"></video>
+                        <img src="TeamBarbe/Urifoto02PB.jpg.png" alt="Uri foto PB" class="static-img">
+                        <img src="TeamBarbe/Urifoto02.jpg.png" alt="Uri foto colorida" class="hover-video">
                     </div>
-                    <div class="team-info">
-                        <h3>Gustavo</h3>
-                        <span class="role">Master Barber</span>
-                        <div class="details">
-                            <p><strong>Idade:</strong> 25 anos</p>
-                            <p><strong>Exp:</strong> 8 anos</p>
-                        </div>
-                        <p class="description">Especialista em cortes clássicos e barboterapia. Transforma cada
-                            atendimento em uma experiência única.</p>
-                        <a href="https://wa.me/553185198305" class="btn-whatsapp" target="_blank"><i
-                                class="fab fa-whatsapp"></i> Agendar com Gustavo</a>
-                    </div>
-                </div>
-                <div class="team-card">
-                    <div class="team-img">
-                        <img src="barber02.jpg" alt="Barbeiro 2">
-                    </div>
+
                     <div class="team-info">
                         <h3>Uri</h3>
-                        <span class="role">Barber</span>
+                        <span class="role">Master Barber</span>
+
                         <div class="details">
                             <p><strong>Idade:</strong> 28 anos</p>
                             <p><strong>Exp:</strong> 12 anos</p>
                         </div>
+
+                        <div>
+                            <p><strong>Unidade:</strong> Milionários</p>
+                        </div>
+
                         <p class="description">Focado em cortes modernos e degradês perfeitos. Sempre antenado nas novas
                             tendências.</p>
-                        <a href="https://wa.me/553171944816" class="btn-whatsapp" target="_blank"><i
-                                class="fab fa-whatsapp"></i> Agendar com Uri</a>
+
+                        <a href="agendar.html?barbeiro=Uri&barbearia=Unidade Milionários" class="btn-agendar">
+                            <i class="fas fa-calendar-check"></i> Agendar com Uri
+                        </a>
                     </div>
                 </div>
+                <!-- Barbeiro Uri -->
+
+
+                <!-- Barbeiro Gustavo -->
                 <div class="team-card">
-                    <div class="team-img">
-                        <img src="Barber03.jpg" alt="Barbeiro 3">
+                    <div class="team-img interactive-video-container">
+                        <img src="TeamBarbe/GustavofotoPB.jpg.png" alt="Barbeiro 1" class="static-img">
+                        <img src="TeamBarbe/Gustavofoto02.jpg.png" loop muted playsinline class="hover-video"></img>
                     </div>
+
+
                     <div class="team-info">
-                        <h3>Alexandre Silva</h3>
+                        <h3>Gustavo</h3>
                         <span class="role">Barber</span>
                         <div class="details">
-                            <p><strong>Idade:</strong> 22 anos</p>
-                            <p><strong>Exp:</strong> Iniciante</p>
+                            <p><strong>Idade:</strong> 25 anos</p>
+                            <p><strong>Exp:</strong> 8 anos</p>
                         </div>
+
+                        <div>
+                            <p><strong>Unidade:</strong> Milionários</p>
+                        </div>
+
+
+                        <p class="description">Especialista em cortes clássicos e barboterapia. Transforma cada
+                            atendimento em uma experiência única.
+                            <!-- centralizar o botão! com os outros perfis, por isso do br -->
+                        </p>
+
+                        <a href="agendar.html?barbeiro=Gustavo&barbearia=Unidade Milionários" class="btn-agendar"><i
+                                class="fas fa-calendar-check"></i> Agendar com Gustavo</a>
+                    </div>
+                </div>
+                <!-- Barbeiro Gustavo -->
+
+
+                <!-- Barbeiro Marcelo -->
+
+                <div class="team-card">
+                    <div class="team-img interactive-video-container">
+                        <img src="TeamBarbe/marcelobarber02.jpg" alt="Uri foto PB" class="static-img">
+                        <img src="TeamBarbe/marcelobarber.jpg" alt="Uri foto colorida" class="hover-video">
+                    </div>
+
+                    <div class="team-info">
+                        <h3>Marcelo Ferreira Silva</h3>
+                        <span class="role">Barber</span>
+                        <div class="details">
+                            <p><strong>Idade:</strong> 24 anos</p>
+                            <p><strong>Exp:</strong> 6 anos</p>
+                        </div>
+
+
+
+                        <div>
+                            <a href="https://maps.app.goo.gl/VjWnyrXT4sgaddGQ8"><strong>Unidade:</strong> Flávio Marques
+                                Lisboa</a>
+                        </div>
+
+
                         <p class="description">Talento nato para desenhos e freestyle. Traz criatividade e estilo para
-                            cada corte.</p>
-                        <a href="https://wa.me/5531994148015" class="btn-whatsapp" target="_blank"><i
-                                class="fab fa-whatsapp"></i> Agendar com Alexandre</a>
+                            cada corte.<br><!-- centralizar o botão! com os outros perfis, por isso do br --><br></p>
+                        <a href="agendar.html?barbeiro=Marcelo&barbearia=Unidade Flávio Marques Lisboa"
+                            class="btn-agendar"><i class="fas fa-calendar-check"></i> Agendar com Marcelo</a>
                     </div>
                 </div>
             </div>
@@ -172,10 +285,10 @@
 
     <!-- Localização -->
     <section id="units" class="units-section">
-        <div class="container">
+        <div class="container reveal">
             <h2>NOSSAS <span class="highlight">UNIDADES</span></h2>
             <p class="units-subtitle">A barbearia nº1 do Barreiro</p>
-            
+
 
             <div class="units-grid">
                 <!-- Unit 1 -->
@@ -214,40 +327,55 @@
 
     <!-- Serviços -->
     <section id="services" class="services-section">
-        <div class="container">
+        <div class="container reveal">
             <h2>NOSSOS <span class="highlight">SERVIÇOS</span></h2>
             <div class="services-grid">
                 <div class="service-card">
                     <i class="fas fa-cut service-icon"></i>
-                    <h3>Corte de Cabelo</h3>
-                    <p>Estilos clássicos e modernos, com acabamento impecável.</p>
-                    <span class="price">R$ 50,00</span>
+                    <h3>CABELO</h3>
+                    <p>Cortes modernos e clássicos.</p>
+                    <span class="price">A partir de R$ 40,00</span>
+                    <button class="btn-service-details" data-category="cabelo">VER MAIS SERVIÇOS</button>
                 </div>
                 <div class="service-card">
                     <i class="fas fa-user-tie service-icon"></i>
-                    <h3>Barba Completa</h3>
-                    <p>Modelagem, toalha quente e hidratação.</p>
-                    <span class="price">R$ 40,00</span>
+                    <h3>BARBA</h3>
+                    <p>Modelagem e hidratação completa.</p>
+                    <span class="price">A partir de R$ 40,00</span>
+                    <button class="btn-service-details" data-category="barba">VER MAIS SERVIÇOS</button>
                 </div>
                 <div class="service-card">
-                    <i class="fas fa-spray-can service-icon"></i>
-                    <h3>Corte + Barba</h3>
-                    <p>O combo completo para renovar seu visual.</p>
-                    <span class="price">R$ 80,00</span>
+                    <i class="fas fa-eye service-icon"></i>
+                    <h3>SOBRANCELHA</h3>
+                    <p>Design e alinhamento dos fios.</p>
+                    <span class="price">A partir de R$ 20,00</span>
+                    <button class="btn-service-details" data-category="sobrancelha">VER MAIS SERVIÇOS</button>
                 </div>
                 <div class="service-card">
-                    <i class="fas fa-child service-icon"></i>
-                    <h3>Corte Infantil</h3>
-                    <p>Cuidado e paciência para os pequenos.</p>
-                    <span class="price">R$ 40,00</span>
+                    <i class="fas fa-flask service-icon"></i>
+                    <h3>QUÍMICA / TRATAMENTOS</h3>
+                    <p>Progressiva, relaxamento e botox.</p>
+                    <span class="price">A partir de R$ 70,00</span>
+                    <button class="btn-service-details" data-category="quimica">VER MAIS SERVIÇOS</button>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Services Modal -->
+    <div id="services-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-title">Serviços Detalhados</h2>
+            <div id="modal-body" class="services-list">
+                <!-- Items will be injected here -->
+            </div>
+        </div>
+    </div>
+
     <!-- Horarios de funcionamento-->
     <section id="hours" class="hours-section">
-        <div class="container">
+        <div class="container reveal">
             <div class="hours-header">
                 <i class="fas fa-cut hours-icon"></i>
                 <h2>HORÁRIOS DE <span class="highlight">FUNCIONAMENTO</span></h2>
@@ -262,11 +390,11 @@
                     </li>
                     <li class="hours-item">
                         <span class="day">TERÇA À SEXTA</span>
-                        <span class="time">08:00 - 18:00</span>
+                        <span class="time">09:00 - 19:00</span>
                     </li>
                     <li class="hours-item">
                         <span class="day">SÁBADO</span>
-                        <span class="time">08:00 - 18:00</span>
+                        <span class="time">08:00 - 17:00</span>
                     </li>
                     <li class="hours-item">
                         <span class="day">DOMINGO</span>
@@ -277,7 +405,7 @@
 
             <div class="hours-footer">
                 <p class="schedule-label">AGENDE SEU HORÁRIO</p>
-                <a href="https://wa.me/553171944816" class="btn-white">AGENDAR AGORA</a>
+                <a href="agendar.html" class="btn-white">AGENDAR AGORA</a>
             </div>
         </div>
     </section>
@@ -286,7 +414,7 @@
 
     <!-- Message & Before/After Section -->
     <section id="about" class="about-section">
-        <div class="container">
+        <div class="container reveal">
             <div class="about-text">
                 <h2>TRANSFORME SEU <span class="highlight">VISUAL</span></h2>
                 <p>"A excelência não é um ato, mas um hábito. Aqui, cuidamos de cada detalhe para que você saia com a
@@ -297,14 +425,14 @@
                 <div class="comparison-slider">
                     <div class="slider-wrapper">
                         <!-- Spacer image to set height based on aspect ratio -->
-                        <img src="antes e depois.jpg" alt="" class="slider-spacer">
+                        <img src="outros/antes e depois.jpg" alt="" class="slider-spacer">
 
                         <div class="image-container before-image">
-                            <img src="antes e depois.jpg" alt="Antes">
+                            <img src="outros/antes e depois.jpg" alt="Antes">
                             <span class="label">ANTES</span>
                         </div>
                         <div class="image-container after-image">
-                            <img src="antes e depois.jpg" alt="Depois">
+                            <img src="outros/antes e depois.jpg" alt="Depois">
                             <span class="label">DEPOIS</span>
                         </div>
                         <div class="slider-handle">
@@ -322,16 +450,20 @@
                     <div class="carousel-track-container">
                         <ul class="carousel-track">
                             <li class="carousel-slide current-slide">
-                                <video src="cortesdemonstracao (1).mp4" loop muted playsinline></video>
+                                <video src="videoCortesDemonstracao/cortesdemonstracao (1).mp4" loop muted
+                                    playsinline></video>
                             </li>
                             <li class="carousel-slide">
-                                <video src="cortesdemonstracao (2).mp4" loop muted playsinline></video>
+                                <video src="videoCortesDemonstracao/cortesdemonstracao (2).mp4" loop muted
+                                    playsinline></video>
                             </li>
                             <li class="carousel-slide">
-                                <video src="cortesdemonstracao (3).mp4" loop muted playsinline></video>
+                                <video src="videoCortesDemonstracao/cortesdemonstracao (3).mp4" loop muted
+                                    playsinline></video>
                             </li>
                             <li class="carousel-slide">
-                                <video src="cortesdemonstracao (4).mp4" loop muted playsinline></video>
+                                <video src="videoCortesDemonstracao/cortesdemonstracao (4).mp4" loop muted
+                                    playsinline></video>
                             </li>
                         </ul>
                         <button class="carousel-button carousel-button--left is-hidden"><i
@@ -353,7 +485,7 @@
     <!-- Avaliações -->
     <!-- tirar print das umas 10 a 20 avaliações do google e colocar dentro de balões 3d e fica anternando entre si, melhor que fazer a ligação do google com o site -->
     <section id="reviews" class="reviews-section">
-        <div class="container">
+        <div class="container reveal">
             <h2>O QUE DIZEM NOSSos <span class="highlight">CLIENTES</span></h2>
 
             <!-- Rating Summary -->
@@ -603,58 +735,80 @@
                     <span class="review-time">2 meses atrás</span>
                 </div>
 
-                <!-- Generated Review 10 -->
-                <div class="review-card">
-                    <div class="review-header">
-                        <img src="https://randomuser.me/api/portraits/men/90.jpg" alt="Thiago Costa"
-                            class="profile-photo">
-                        <div class="review-info">
-                            <h4>Thiago Costa</h4>
-                            <div class="stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                        <a href="https://maps.app.goo.gl/Pbridr6CMUtfQGwL9" target="_blank" class="google-icon-link">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/768px-Google_%22G%22_logo.svg.png"
-                                alt="Google" class="google-icon">
-                        </a>
-                    </div>
-                    <p class="review-text">"Serviço impecável. O corte ficou exatamente como eu pedi. Parabéns a
-                        toda a
-                        equipe!"</p>
-                    <span class="review-time">3 meses atrás</span>
-                </div>
-            </div>
-        </div>
+
     </section>
-
-
 
     <!-- Scheduling Section -->
     <section id="contact" class="scheduling-section">
         <div class="overlay-scheduling"></div>
-        <div class="scheduling-content">
+        <div class="scheduling-content reveal">
             <h2>AGENDE SEU <span class="highlight">HORÁRIO</span></h2>
             <p>Não perca tempo. Garanta seu visual com os melhores profissionais.</p>
-            <a href="https://wa.me/553171944816" class="btn-hero btn-scheduling">AGENDAR AGORA</a>
+            <a href="agendar.html" class="btn-hero btn-scheduling">AGENDAR AGORA</a>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container footer-content">
-            <div class="footer-logo">BARBEARIA VIDA NOVA</div>
-            <div class="social-links">
-                <a href="https://www.instagram.com/barbeariavidanova/"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/barbeariavidanova"><i class="fab fa-facebook"></i></a>
-                <a href="https://wa.me/553171944816"><i class="fab fa-whatsapp"></i></a>
+    <!-- Rodapé -->
+
+
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <!-- Coluna 1: Marca -->
+            <div class="footer-col brand-col">
+                <div class="footer-logo">BARBEARIA VIDA NOVA</div>
+                <p class="footer-tagline">Mais do que um corte, uma experiência de estilo e tradição.
+                </p>
             </div>
-            <p>&copy; 2025 Barbearia Vida Nova. Todos os direitos reservados.</p>
-        </div>
+
+            <!-- Coluna 2: Contato -->
+            <div class="footer-col contact-col">
+                <ul class="contact-list">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <a href="https://maps.app.goo.gl/Pbridr6CMUtfQGwL9" target="_blank">
+                            Rua Amílcar Cabral, 401 - Milionários<br>Belo Horizonte - MG
+                        </a>
+                    </li>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <a href="https://maps.app.goo.gl/UVuQEN1YR12ZmDxP8" target="_blank">
+                            R. Santa Claúdia, 357 - Flávio Marques Lisboa
+                            <br>Belo Horizonte - MG
+                        </a>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone-alt"></i>
+                        <span>(31) 97194-4816</span>
+                    </li>
+                    <li>
+
+                        <!-- Horário de funcionamento roda pé-->
+                        <i class="fas fa-clock"></i>
+                        <span>Ter a Sáb: 08:00 - 20:00</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Coluna 3: Navegação -->
+            <div class="footer-col nav-col">
+                <h3>LINKS RÁPIDOS</h3>
+                <div class="container footer-content">
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/barbeariavidanova/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/barbeariavidanova"><i class="fab fa-facebook"></i></a>
+                        <a href="https://wa.me/5531971944816"><i class="fab fa-whatsapp"></i></a>
+
+
+                        <ul class="footer-links">
+                            <div class="footer-bottom">
+                                <div class="container bottom-content">
+                                    <p>&copy; 2025 Barbearia Vida Nova. Todos os direitos reservados.</p>
+                                    <p class="developer-credit">
+                                        Desenvolvido por <a href="https://linktr.ee/AlexandreSilvaFerreira"
+                                            title="Portfólio em breve">Alexandre Silva Ferreira</a>
+                                    </p>
+                                </div>
+                            </div>
     </footer>
 
     <!-- Video Modal -->
@@ -671,6 +825,70 @@
     <script src="script.js"></script>
     <script
         src="https://whatsa.me/bt-min.js?link=https://whatsa.me/553185198305/?t=Ol%C3%A1,%20gostaria%20de%20agendar%20um%20hor%C3%A1rio%20"></script>
+    <!-- Custom Alert Modal -->
+    <div id="custom-alert" class="custom-alert-overlay">
+        <div class="custom-alert-box">
+            <div class="alert-icon">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <p id="custom-alert-message">Mensagem de alerta aqui.</p>
+            <button class="btn-alert" onclick="closeCustomAlert()">OK</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const authContainer = document.getElementById('auth-container');
+            const token = localStorage.getItem('token');
+
+            // 1. Auth State in Nav
+            if (token) {
+                // User is logged in
+                authContainer.innerHTML = `
+                    <a href="perfil.html" class="btn-nav" style="background: transparent; border: 1px solid #d4af37; color: #d4af37;">
+                        <i class="fas fa-user-circle"></i> Perfil
+                    </a>
+                `;
+            } else {
+                // User is NOT logged in
+                authContainer.innerHTML = `
+                    <a href="login.html" class="btn-nav" style="background: transparent; padding: 8px 15px; font-size: 0.9rem;">Entrar</a>
+                    <a href="register.html" class="btn-nav" style="background: #d4af37; color: #000; padding: 8px 15px; font-size: 0.9rem;">Registrar</a>
+                `;
+            }
+
+            // 2. Intercept "Agendar" Clicks
+            // Select both Nav button and Hero button (and any other link to agendar.html)
+            const agendarLinks = document.querySelectorAll('a[href="agendar.html"], a[href^="agendar.html?"]');
+
+            agendarLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    if (!localStorage.getItem('token')) {
+                        e.preventDefault(); // Stop navigation
+                        showCustomAlert('Você precisa entrar na sua conta para agendar um horário.', 'login.html');
+                    }
+                    // If logged in, let default action happen (go to agendar.html)
+                });
+            });
+        });
+
+        // Custom Alert Logic
+        let redirectUrl = null;
+
+        function showCustomAlert(message, redirect = null) {
+            document.getElementById('custom-alert-message').textContent = message;
+            document.getElementById('custom-alert').classList.add('show');
+            redirectUrl = redirect;
+        }
+
+        function closeCustomAlert() {
+            document.getElementById('custom-alert').classList.remove('show');
+            if (redirectUrl) {
+                window.location.href = redirectUrl;
+                redirectUrl = null;
+            }
+        }
+    </script>
 </body>
 
 </html>
